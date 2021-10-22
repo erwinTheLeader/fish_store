@@ -17,7 +17,6 @@ class CategoriesController extends GetxController {
 Future<List<Categories>> fetchData() async {
   final response =
       await http.get(Uri.parse("https://flouka.ma/api/categories"));
-  print(response.body);
   if (response.statusCode == 200) {
     List jsonResponse = json.decode(response.body);
     return jsonResponse.map((data) => Categories.fromJson(data)).toList();

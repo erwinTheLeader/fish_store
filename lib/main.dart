@@ -3,18 +3,14 @@ import 'package:fish_store/views/home.dart';
 import 'package:get/get.dart';
 
 void main() {
-  runApp( GetMaterialApp(
+  runApp(GetMaterialApp(
     debugShowCheckedModeBanner: false,
     title: "buy Fish",
     theme: ThemeData(
-    colorScheme: ColorScheme.fromSwatch(
-      primarySwatch: Colors.blue,
-    ).copyWith(
-      secondary: Colors.blue[200]),
+      colorScheme: ColorScheme.fromSwatch(
+        primarySwatch: Colors.blue,
+      ).copyWith(secondary: Colors.blue[200]),
     ),
-
     home: Home(),
-    )
-  );
+  ));
 }
-
