@@ -9,8 +9,12 @@ class CategoriesController extends GetxController {
 
   @override
 
+  void onInit() {
+    super.onInit();
+    fetchData();
+  }
 
-  Future<List<Categories>> fetchData() async {
+Future<List<Categories>> fetchData() async {
   final response =
       await http.get(Uri.parse("https://flouka.ma/api/categories"));
   print(response.body);

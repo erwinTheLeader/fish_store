@@ -1,6 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 import 'package:get/get.dart';
-import 'package:fish_store/models/categories_models.dart';
+import 'package:fish_store/controllers/categories_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -12,27 +12,10 @@ class Home extends StatefulWidget {
   _HomeState createState() => _HomeState();
 }
 
-Future<List<Categories>> fetchData() async {
-  final response =
-      await http.get(Uri.parse("https://flouka.ma/api/categories"));
-  print(response.body);
-  if (response.statusCode == 200) {
-    List jsonResponse = json.decode(response.body);
-    return jsonResponse.map((data) => Categories.fromJson(data)).toList();
-  } else {
-    throw Exception('Unexpected error occured!');
-  }
-}
-
 class _HomeState extends State<Home> {
-  late Future<List<Categories>> futureData;
+  final controllerCategories = Get.put(CategoriesController());
 
   @override
-  void initState() {
-    super.initState();
-    futureData = fetchData();
-  }
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -47,7 +30,7 @@ class _HomeState extends State<Home> {
         ),
         body: Center(
           child: FutureBuilder<List<Categories>>(
-            future: futureData,
+            future: controllerCategories.fetchData() ,
             builder: (context, snapshot) {
               if (snapshot.hasData) {
                 List<Categories>? data = snapshot.data;
