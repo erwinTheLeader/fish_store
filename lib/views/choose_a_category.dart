@@ -32,6 +32,7 @@ class _ChooseACategoryState extends State<ChooseACategory> {
               if (snapshot.hasData) {
                 List<Categories>? data = snapshot.data;
                 return ListView.builder(
+                    // scrollDirection: Axis.horizontal,
                     itemCount: data!.length,
                     itemBuilder: (BuildContext context, int index) {
                       return Container(
@@ -80,8 +81,8 @@ class _ChooseACategoryState extends State<ChooseACategory> {
                     });
               } else if (snapshot.hasError) {
                 return Text("${snapshot.error}");
-              } 
-              return  CircularProgressIndicator();
+              }
+              return CircularProgressIndicator();
             },
           ),
         ),
