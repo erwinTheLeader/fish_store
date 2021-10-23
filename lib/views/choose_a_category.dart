@@ -80,10 +80,8 @@ class _ChooseACategoryState extends State<ChooseACategory> {
                     });
               } else if (snapshot.hasError) {
                 return Text("${snapshot.error}");
-              } else {
-                // By default show a loading spinner.
-                CircularProgressIndicator();
-              }
+              } 
+              return  CircularProgressIndicator();
             },
           ),
         ),

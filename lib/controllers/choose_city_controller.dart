@@ -7,4 +7,5 @@ class CityController extends GetxController {
     selectedCity = value;
     update();
   }
+  
 }
